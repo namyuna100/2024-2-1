@@ -1,0 +1,135 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    min-width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.background{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    cursor: none;
+}
+
+.background .bgb {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -3;
+}
+
+.background .bga {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    clip-path: circle(0px at 0 0); /* 초기 상태에서 숨김 */
+    transition: clip-path 0.1s ease-out;
+}
+
+.container{
+    background-color: white;
+    width: 70%;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    border-radius: 8px;
+    stroke: #ADADAD 3px solid;
+}
+
+.past, .present{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    outline: 1px solid black;
+}
+
+.past-top, .present-top{
+    flex: 5;
+    display: flex;
+    flex-direction: column;
+    z-index: 0;
+    cursor: default;
+}
+
+.past-top .item, .present-top .item {
+    background: rgb(193,193,193);
+    background: linear-gradient(0deg, rgba(193,193,193,1) 0%, rgba(242,242,242,1) 100%);
+    width: 100%;
+    flex: 1;
+    padding-left: 10px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    cursor: grab;
+}
+
+.item .details {
+    display: flex;
+    align-items: center;
+    cursor: default;
+}
+
+.past-bottom, .present-bottom{
+    flex: 5;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+
+}
+
+.past-bottom-text, .present-bottom-text{
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 10;
+    color: white;
+    mix-blend-mode: difference;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: default;
+
+}
+
+
+.past-bottom img, .present-bottom img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.present-bottom img {
+    filter: blur(50px);
+    image-rendering: pixelated;
+    transition: filter 0.5s ease; /* 선명화 애니메이션 */
+}
+
+.item.dragging :where(.details, i) {
+    opacity: 0;
+}
+
+
+
+
